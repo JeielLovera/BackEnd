@@ -1,0 +1,14 @@
+D:\Git5\BackEnd\Pizza.Service\bin\Debug\netstandard2.0\Pizza.Service.deps.json
+D:\Git5\BackEnd\Pizza.Service\bin\Debug\netstandard2.0\Pizza.Service.dll
+D:\Git5\BackEnd\Pizza.Service\bin\Debug\netstandard2.0\Pizza.Service.pdb
+D:\Git5\BackEnd\Pizza.Service\bin\Debug\netstandard2.0\Pizza.Domain.dll
+D:\Git5\BackEnd\Pizza.Service\bin\Debug\netstandard2.0\Pizza.Repository.dll
+D:\Git5\BackEnd\Pizza.Service\bin\Debug\netstandard2.0\Pizza.Domain.pdb
+D:\Git5\BackEnd\Pizza.Service\bin\Debug\netstandard2.0\Pizza.Repository.pdb
+D:\Git5\BackEnd\Pizza.Service\obj\Debug\netstandard2.0\Pizza.Service.csprojAssemblyReference.cache
+D:\Git5\BackEnd\Pizza.Service\obj\Debug\netstandard2.0\Pizza.Service.csproj.CoreCompileInputs.cache
+D:\Git5\BackEnd\Pizza.Service\obj\Debug\netstandard2.0\Pizza.Service.AssemblyInfoInputs.cache
+D:\Git5\BackEnd\Pizza.Service\obj\Debug\netstandard2.0\Pizza.Service.AssemblyInfo.cs
+D:\Git5\BackEnd\Pizza.Service\obj\Debug\netstandard2.0\Pizza.Service.csproj.CopyComplete
+D:\Git5\BackEnd\Pizza.Service\obj\Debug\netstandard2.0\Pizza.Service.dll
+D:\Git5\BackEnd\Pizza.Service\obj\Debug\netstandard2.0\Pizza.Service.pdb
