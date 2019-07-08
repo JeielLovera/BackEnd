@@ -6,38 +6,38 @@ namespace Pizza.Service.Implementation
 {
     public class ClienteService : IClienteService
     {
-        private IClienteRepository clienteRepo;
-        public ClienteService(IClienteRepository clienteRepo){
-            this.clienteRepo=clienteRepo;
+        private IClienteRepository clienterepository;
+        public ClienteService(IClienteRepository clienterepository){
+            this.clienterepository =clienterepository;
         }
-        public bool Delete(int id)
+        public Cliente fetchByDni(string dni)
         {
-            throw new System.NotImplementedException();
+            return clienterepository.fetchByDni(dni);
         }
 
-        public Cliente fetchByNombre(string Nombre)
+        public IEnumerable<Cliente> fetchByNombre(string nombre)
         {
-            return clienteRepo.fetchByNombre(Nombre);
+            return clienterepository.fetchByNombre(nombre);
         }
 
         public Cliente Get(int id)
         {
-            return clienteRepo.Get(id);
+            return clienterepository.Get(id);
         }
 
         public IEnumerable<Cliente> GetAll()
         {
-            return clienteRepo.GetAll();
+            return clienterepository.GetAll();
         }
 
         public bool Save(Cliente entity)
         {
-            return clienteRepo.Save(entity);
+           return clienterepository.Save(entity);
         }
 
         public bool Update(Cliente entity)
         {
-            return clienteRepo.Update(entity);
+            throw new System.NotImplementedException();
         }
     }
 }

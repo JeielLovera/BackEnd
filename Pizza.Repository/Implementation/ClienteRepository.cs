@@ -1,102 +1,108 @@
 using System.Collections.Generic;
-using Pizza.Domain;
-using Pizza.Repository.Context;
-using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Pizza.Domain;
+using Pizza.Repository.Context;
 
 namespace Pizza.Repository.Implementation
 {
     public class ClienteRepository : IClienteRepository
-    {
+    {   
         private ApplicationDbContext context;
-        public ClienteRepository(ApplicationDbContext context){
-            this.context=context;
-        }
-        public bool Delete(int id)
-        {
-            throw new System.NotImplementedException();
-        }
 
-        public Cliente fetchByNombre(string Nombre)
+        public ClienteRepository (ApplicationDbContext context){
+            this.context = context;
+        }
+        public Cliente fetchByDni(string dni)
         {
-            var cliente=new Cliente();
-            try{
-                cliente=context.Clientes.Single(c => c.Nombres==Nombre);
+            var result = new Cliente();
+            try
+            {
+                result = context.Clientes.Single(x => x.Dni == dni);
             }
-            catch(System.Exception){
+
+            catch (System.Exception)
+            {
+
                 throw;
             }
-            return cliente;
+            return result;
+        }
+
+        public IEnumerable<Cliente> fetchByNombre(string nombre)
+        {
+            var result = new List<Cliente>();
+            try
+            {
+                result = context.Clientes.Where(x=> x.Nombres == nombre).ToList();
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+            return result;
         }
 
         public Cliente Get(int id)
         {
-            var cliente=new Cliente();
-            try{
-                cliente=context.Clientes.Single(c => c.Id==id);
+           var result = new Cliente();
+            try
+            {
+                result = context.Clientes.Single(x => x.Id == id);
             }
-            catch(System.Exception){
+
+            catch (System.Exception)
+            {
+
                 throw;
             }
-            return cliente;
+            return result;
         }
 
         public IEnumerable<Cliente> GetAll()
         {
-            var clientes=new List<Cliente>();
-            try{
-                clientes=context.Clientes.ToList();
-            }
-            catch(System.Exception){
-                throw;
-            }
-            return clientes;
+            var result = context.Clientes
+                .Include(d => d.Direccion)
+                .ToList();
+            return result.Select(d => new Cliente{
+                Id=d.Id,
+                Nombres = d.Nombres,
+                Telefono =d.Telefono,
+                Direccion=d.Direccion,
+                Direccionid = d.Direccion.Id,
+                Numerodireccion = d.Numerodireccion,
+                Referencia=d.Referencia,
+                Correo=d.Correo,
+                Dni=d.Dni
+            });
         }
 
         public bool Save(Cliente entity)
         {
-            Cliente cliente=new Cliente(){
-                Nombres=entity.Nombres,
-                Telefono=entity.Telefono,
-                DireccionId=entity.DireccionId,
-                NumeroDireccion=entity.NumeroDireccion,
+            Cliente cliente = new Cliente(){
+                Nombres = entity.Nombres,
+                Telefono =entity.Telefono,
+                Direccionid = entity.Direccionid,
+                Numerodireccion = entity.Numerodireccion,
                 Referencia=entity.Referencia,
                 Correo=entity.Correo,
                 Dni=entity.Dni
-
             };
 
             try{
-                context.Clientes.Add(cliente);
-                context.SaveChanges();
+                context.Clientes.Add (cliente);
+                context.SaveChanges ();
             }
-            catch(System.Exception){
+            catch{
                 return false;
             }
             return true;
-
         }
 
         public bool Update(Cliente entity)
         {
-            try{
-                var clienteoriginal=context.Clientes.Single(c =>c.Id==entity.Id);
-                clienteoriginal.Nombres=entity.Nombres;
-                clienteoriginal.Telefono=entity.Telefono;
-                clienteoriginal.DireccionId=entity.DireccionId;
-                clienteoriginal.NumeroDireccion=entity.NumeroDireccion;
-                clienteoriginal.Referencia=entity.Referencia;
-                clienteoriginal.Correo=entity.Correo;
-                clienteoriginal.Dni=entity.Dni;
-
-                context.Clientes.Update(clienteoriginal);
-                context.SaveChanges();
-            }
-            catch(System.Exception){
-                return false;
-            }
-            return true;
+            throw new System.NotImplementedException();
         }
     }
 }

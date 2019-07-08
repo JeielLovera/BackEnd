@@ -6,38 +6,48 @@ namespace Pizza.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClienteController:ControllerBase
+    public class ClienteController :ControllerBase
     {
-        private IClienteService clienteServ;
-        public ClienteController(IClienteService clienteServ){
-            this.clienteServ=clienteServ;
+         private IClienteService clienteService;
+        public ClienteController(IClienteService clienteService)
+        {
+            this.clienteService = clienteService;
         }
 
         [HttpGet]
-        public ActionResult GetAll(){
-            return Ok(clienteServ.GetAll());
-        }
-
-        [HttpGet("{id}")]
-        public ActionResult Get([FromRoute] int id){
-            return Ok(clienteServ.Get(id));
-        }
-
-        [HttpGet("Nombres/{nombre}")]
-        public ActionResult fetchByNombre([FromRoute] string nombre){
-            return Ok(clienteServ.fetchByNombre(nombre));
-        }
-
-        [HttpPost]
-        public ActionResult Save([FromBody] Cliente entity)
+        public ActionResult GetAll()
         {
-            return Ok(clienteServ.Save(entity));
+            return Ok(
+                clienteService.GetAll()
+            );
         }
-
-        [HttpPut]
-        public ActionResult Update([FromBody] Cliente entity){
-            return Ok(clienteServ.Update(entity));
+        [HttpGet("{id}")]
+        public ActionResult Get(int id)
+        {
+            return Ok(
+                clienteService.Get(id)
+            );
         }
-
+        [HttpGet("Dni/{dni}")]
+        public ActionResult fetchByDni(string dni)
+        {
+            return Ok(
+                clienteService.fetchByDni(dni)
+            );
+        }
+        [HttpGet("Nombre/{nombre}")]
+        public ActionResult fetchByNombre(string nombre)
+        {
+            return Ok(
+                clienteService.fetchByNombre(nombre)
+            );
+        }
+        [HttpPost]
+        public ActionResult Save([FromBody] Cliente cliente)
+        {
+            return Ok(
+                clienteService.Save(cliente)
+            );
+        }
     }
 }

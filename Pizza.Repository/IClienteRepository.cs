@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using Pizza.Domain;
 
 namespace Pizza.Repository
 {
-    public interface IClienteRepository:IRepository<Cliente>
+    public interface IClienteRepository: IRepository<Cliente>
     {
-         Cliente fetchByNombre(string Nombre);
+         IEnumerable <Cliente> fetchByNombre(string nombre); 
+         Cliente fetchByDni(string dni); 
     }
 }
