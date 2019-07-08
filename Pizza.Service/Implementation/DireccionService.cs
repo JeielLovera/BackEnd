@@ -7,13 +7,15 @@ namespace Pizza.Service.Implementation
     public class DireccionService : IDireccionService
     {
         private IDireccionRepository direccionrepository;
-        private IDistritoRepository distritorepository;
-        private ITipoDireccionRepository tipodireccionrepository;
-        public DireccionService(IDireccionRepository direccionrepository,IDistritoRepository distritorepository,ITipoDireccionRepository tipodireccionrepository){
+        public DireccionService(IDireccionRepository direccionrepository){
             this.direccionrepository =direccionrepository;
-            this.distritorepository = distritorepository;
-            this.tipodireccionrepository = tipodireccionrepository;
         }
+
+        public bool Delete(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public Direccion Get(int id)
         {
             return direccionrepository.Get(id);
@@ -26,12 +28,13 @@ namespace Pizza.Service.Implementation
 
         public bool Save(Direccion entity)
         {
-            Distrito distrito = distritorepository.Get(entity.DistritoId);
-            TipoDireccion tipodireccion = tipodireccionrepository.Get(entity.TipodireccionId);
-            entity.Distrito = distrito;
-            entity.Tipodireccion = tipodireccion;
 
             return direccionrepository.Save(entity);
+        }
+
+        public bool Update(Direccion entity)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

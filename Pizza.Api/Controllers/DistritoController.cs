@@ -29,7 +29,7 @@ namespace Pizza.Api.Controllers
             );
         }
 
-        [HttpGet("fbn/{nombre}")]
+        [HttpGet("Nombre/{nombre}")]
         public ActionResult fetchByNombre(string nombre)
         {
             return Ok(

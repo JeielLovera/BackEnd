@@ -9,9 +9,16 @@ namespace Pizza.Repository.Implementation
     public class DireccionRepository : IDireccionRepository
     {
         private ApplicationDbContext context;
+
         public DireccionRepository(ApplicationDbContext context){
-            this.context = context;
+            this.context=context;
         }
+
+        public bool Delete(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public Direccion Get(int id)
         {
            var result = new Direccion();
@@ -33,28 +40,36 @@ namespace Pizza.Repository.Implementation
                 .Include(d => d.Distrito)
                 .ToList();
             return result.Select(d => new Direccion{
+                Id=d.Id,
                 Nombre = d.Nombre,
                 Tipodireccion =d.Tipodireccion,
+                TipodireccionId=d.Tipodireccion.Id,
                 Distrito = d.Distrito,
+                DistritoId=d.Distrito.Id
             });
         }
 
         public bool Save(Direccion entity)
         {
-            Direccion direccion = new Direccion {
+            Direccion direccion = new Direccion(){
                 Nombre = entity.Nombre,
                 TipodireccionId = entity.TipodireccionId,
                 DistritoId = entity.DistritoId
             };
 
-        try{
+            try{
                 context.Direcciones.Add (direccion);
                 context.SaveChanges ();
-             }
+            }
             catch{
                 return false;
             }
             return true;
+        }
+
+        public bool Update(Direccion entity)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
