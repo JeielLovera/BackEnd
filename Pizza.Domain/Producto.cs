@@ -8,6 +8,8 @@ namespace Pizza.Domain
         public TipoProducto Tipoproducto{get;set;}
         public int TipoproductoId{get;set;}
         public string Descripcion{get;set;}
+
+        public string Img{get;set;}
     //public decimal.Round(decimal precio2, int decimales);
     }
 

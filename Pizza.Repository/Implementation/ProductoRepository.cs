@@ -29,7 +29,8 @@ namespace Pizza.Repository.Implementation
             
             }
             catch (System.Exception)
-            {                
+            {
+                
                 throw;
             }
             return lista;
@@ -71,7 +72,8 @@ namespace Pizza.Repository.Implementation
                 nombre=entity.nombre,
                 precio=entity.precio,
                 TipoproductoId=entity.TipoproductoId,
-                Descripcion=entity.Descripcion        
+                Descripcion=entity.Descripcion,
+                Img=entity.Img       
             };
             try
             {
