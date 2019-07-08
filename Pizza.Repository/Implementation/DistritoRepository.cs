@@ -8,7 +8,8 @@ namespace Pizza.Repository.Implementation
     public class DistritoRepository : IDistritoRepository
     {   
         private ApplicationDbContext context;
-        public DistritoRepository(ApplicationDbContext context){
+
+        public DistritoRepository (ApplicationDbContext context){
             this.context = context;
         }
         public Distrito fetchByNombre(string nombre)
@@ -19,7 +20,6 @@ namespace Pizza.Repository.Implementation
             {
                 result = context.Distritos.Single(x => x.Nombre == nombre);
             }
-
             catch (System.Exception)
             {
 
@@ -51,10 +51,8 @@ namespace Pizza.Repository.Implementation
             {
                 result = context.Distritos.ToList();
             }
-
             catch (System.Exception)
             {
-
                 throw;
             }
             return result;
