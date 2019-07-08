@@ -7,8 +7,10 @@ namespace Pizza.Repository.Implementation
 {
     public class TipoDireccionRepository : ITipoDireccionRepository
     {
-        
         private ApplicationDbContext context;
+        public TipoDireccionRepository(ApplicationDbContext context){
+            this.context = context;
+        }
         public TipoDireccion fetchByNombre(string nombre)
         {
             var result = new TipoDireccion();

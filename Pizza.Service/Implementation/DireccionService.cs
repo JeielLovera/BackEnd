@@ -9,8 +9,10 @@ namespace Pizza.Service.Implementation
         private IDireccionRepository direccionrepository;
         private IDistritoRepository distritorepository;
         private ITipoDireccionRepository tipodireccionrepository;
-        public DireccionService(IDireccionRepository direccionrepository){
+        public DireccionService(IDireccionRepository direccionrepository,IDistritoRepository distritorepository,ITipoDireccionRepository tipodireccionrepository){
             this.direccionrepository =direccionrepository;
+            this.distritorepository = distritorepository;
+            this.tipodireccionrepository = tipodireccionrepository;
         }
         public Direccion Get(int id)
         {

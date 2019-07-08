@@ -9,6 +9,9 @@ namespace Pizza.Repository.Implementation
     public class DireccionRepository : IDireccionRepository
     {
         private ApplicationDbContext context;
+        public DireccionRepository(ApplicationDbContext context){
+            this.context = context;
+        }
         public Direccion Get(int id)
         {
            var result = new Direccion();

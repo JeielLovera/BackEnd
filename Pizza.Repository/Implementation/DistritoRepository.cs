@@ -6,8 +6,11 @@ using Pizza.Repository.Context;
 namespace Pizza.Repository.Implementation
 {
     public class DistritoRepository : IDistritoRepository
-    {
+    {   
         private ApplicationDbContext context;
+        public DistritoRepository(ApplicationDbContext context){
+            this.context = context;
+        }
         public Distrito fetchByNombre(string nombre)
         {
             
